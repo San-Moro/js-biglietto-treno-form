@@ -8,15 +8,32 @@
 
 // INPUT
 // km
-const userKm = parseInt(prompt("Quanti km deve percorrere il passeggero?"));
-// Age
-const userAge = parseInt(prompt("Quanti anni ha il passeggero?"));
+const userKmInput = document.getElementById("user-km");
 
-console.log(userKm, typeof(userKm));
-console.log(userAge, typeof(userAge));
+
+// Age
+const userAgeInput = document.getElementById("user-age");
+
+
+// Button
+const calculateBtn = document.getElementById("calculate-btn")
+
+calculateBtn.addEventListener("click" , function() {
+    // al click prendo i valori degli input
+    const userKm = userKmInput.value;
+    console.log(userKm);
+
+    const userAge = userAgeInput.value;
+    console.log(userAge);
+
+})
+
+
 
 // PROCESSING
 // calculate base price
+const userKm = userKmInput.value;
+
 const basePrice = userKm * 0.21;
 console.log(basePrice);
 
@@ -26,6 +43,8 @@ console.log(basePrice);
 //     - discount 40%
 // Altrimenti
 //     -base price
+
+const userAge = userAgeInput.value;
 
 let discount = 0;
 if (userAge < 18) {
