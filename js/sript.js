@@ -26,49 +26,46 @@ calculateBtn.addEventListener("click" , function() {
     const userAge = userAgeInput.value;
     console.log(userAge);
 
+    // calculate base price
+    const basePrice = userKmInput.value * 0.21;
+    console.log(basePrice);
+
+    // PROCESSING
+
+    // SE age < 18
+    //     - discount 20%
+    // Altrimenti SE age > 65
+    //     - discount 40%
+    // Altrimenti
+    //     -base price
+
+
+    let discount = 0;
+    if (userAge < 18) {
+        // discount 20%;
+        discount = 20;
+    } else if (userAge > 65) {
+        // discount 40%;
+        discount = 40;
+    } else {
+        discount = 0;
+    }
+
+    console.log(discount);
+
+    // finalPrice
+    // (basePrice * discount / 100)
+    const finalPrice = basePrice - (basePrice * discount / 100);
+
+    console.log(finalPrice);
+
+    // OUTPUT
+    document.getElementById("result").innerHTML = `
+    <h3> Il Prezzo Base è € ${basePrice.toFixed(2)} </h3>
+    <p>Lo sconto è del ${discount}%</p>
+    <h2> Il Prezzo Finale da pagare è € ${finalPrice.toFixed(2)} </h2>
+    `
+    // svuoto input
+    userKmInput.value = "";
+    userAgeInput.value = "";
 })
-
-
-
-// PROCESSING
-// calculate base price
-const userKm = userKmInput.value;
-
-const basePrice = userKm * 0.21;
-console.log(basePrice);
-
-// SE age < 18
-//     - discount 20%
-// Altrimenti SE age > 65
-//     - discount 40%
-// Altrimenti
-//     -base price
-
-const userAge = userAgeInput.value;
-
-let discount = 0;
-if (userAge < 18) {
-    // discount 20%;
-    discount = 20;
-} else if (userAge > 65) {
-    // discount 40%;
-    discount = 40;
-} else {
-    discount = 0;
-}
-
-console.log(discount);
-
-// finalPrice
-// (basePrice * discount / 100)
-const finalPrice = basePrice - (basePrice * discount / 100);
-
-console.log(finalPrice);
-
-
-// OUTPUT
-document.getElementById("result").innerHTML = `
-<h3> Il Prezzo Base è € ${basePrice.toFixed(2)} </h3>
-<p>Lo sconto è del ${discount}%</p>
-<h2> Il Prezzo Finale da pagare è € ${finalPrice.toFixed(2)} </h2>
-`
